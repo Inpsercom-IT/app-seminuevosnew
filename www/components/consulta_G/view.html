@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<div data-role="view" data-title="CONSULTA GENERAL" data-layout="main" data-model="app.consultaG" data-show="app.consultaG.onShow"
+     data-after-show="app.consultaG.afterShow" id="consultaGScreen" class="screen" style="position :relative;">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <span data-role="view-title"></span>
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+            <a data-align="right" class="fa fa-reply" href="components/certifica_general/view.html" aria-hidden="true" data-role="button"></a>
+            <div id="navigation-container-more" style="display: none">
+            </div>
+        </div>
+    </header>
+    <div class="fondoRojoLogin">
+        <div class="container">
+            <div class="form-group">
+               <div id="gridVINUsaG" style="font-size:11px; display:initial"></div>
+                <div class="row" style="min-width:95%"></div>
+                <div id="vehiculoUsaG"></div>
+                <div id="tabstripUsaG" style="display: block">
+                    <ul>
+                        <li class="k-state-active">
+                            <i class="fa fa-car fa-lg " aria-hidden="true" title="Datos del Vehiculo"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-dashboard fa-lg" aria-hidden="true" title="Historial Mantenimientos"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-building-o fa-lg" aria-hidden="true" title="Formulario"></i>
+                        </li>
+                    </ul>
+                    <div>
+                        <p>
+                            <legend id="lydCG0" style="min-width:667px;"><b>DATOS VEH&#205;CULO</b></legend>
+                        </p>
+                        <table style="width:100%;">
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                VIN
+                                            </b>
+                                        </label><input id="chasisUsaG" data-bind="value: chasisUsaG" placeholder="VIN" style="text-transform:uppercase;" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Motor</b></label>
+                                        <input id="motorUsaG" data-bind="value: motorUsaG" placeholder="Motor" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                A&ntilde;o
+                                            </b>
+                                        </label><input id="anio_modeloUsaG" data-bind="value: anio_modeloUsaG" placeholder="A&ntilde;o Modelo" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Kilometraje</b></label>
+                                        <input id="kilometrosUsaG" data-bind="value: kilometrosUsaG" placeholder="Kilometraje" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red"><b>Marca</b></label>
+                                        <div id="divcbomarcasUsaG"></div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Modelo</b></label>
+                                        <div id="divcboModeloUsaG"></div>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red"><b>Des. Model</b></label>
+                                        <input id="desmodeloUsaG" data-bind="value: desmodeloUsaG" placeholder="Descripcion del Modelo" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Color</b></label>
+                                        <div id="divcboColorUsaG"></div>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                Cilindraje
+                                            </b>
+                                        </label><input id="cilindrajeUsaG" data-bind="value: cilindrajeUsaG" placeholder="Cilindraje" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Placa</b></label>
+                                        <input id="placaUsaG" data-bind="value: placaUsaG" placeholder="Placa" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                A&ntilde;o Matricula
+                                            </b>
+                                        </label><input id="anio_matriculaUsaG" data-bind="value: anio_matriculaUsaG" placeholder="A&ntilde;o de Matriculo" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Ubicacion Fisica</b></label>
+                                        <div id="divcboUbicaUsaG"></div>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                Grupo Auto(clase)
+                                            </b>
+                                        </label> <div id="dboClaseCG"></div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Subclase(carroceria)</b></label>
+                                        <div id="dboCarroceriaCG"></div>
+                                    </p>
+                                </td>
+                            
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                Transmisión
+                                            </b>
+                                        </label> <div id="dbotransmisionCG"></div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <label class="w3-text-red"><b>Código Tracción</b></label>
+                                        <div id="dboTraccionCG"></div>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                Combustible
+                                            </b>
+                                        </label><div id="dboCombustibleCG"></div>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        
+                                    </p>
+                                </td>
+                            
+                            </tr>
+                        </table>
+                        <p>
+                            <label class="w3-text-red">
+                                <b>
+                                    Observacion
+                                </b>
+                            </label>
+                            <textarea name="comentariosG" rows="2" cols="30" id="observacionUG" data-bind="value: observacionUG" placeholder="Observacion Tecnica" class="w3-input w3-border textos" maxlength="200"></textarea>
+                        </p>
+                        <br />
+                        <p>
+                            <label class="w3-text-red"><b>Fecha Recepci&oacute;n</b></label>
+                            <input id="fecha_recepcionUsaG" type="text" class="w3-input textos" readonly>
+                        </p>
+                        <table>
+                            <tr>
+                                <td width="30%">
+                                    <p>
+                                        <label class="w3-text-red">
+                                            <b>
+                                                A&ntilde;o
+                                            </b>
+                                        </label><input id="anio_vh62UsaG" data-bind="value: anio_vh62UsaG" placeholder="A&ntilde;o VH62" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td width="35%">
+                                    <p>
+                                        <label class="w3-text-red"><b>Secuencia</b></label>
+                                        <input id="secuenciaUsaG" data-bind="value: secuenciaUsaG" placeholder="Secuencia" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                                <td width="35%">
+                                    <p>
+                                        <label class="w3-text-red"><b>Estado</b></label>
+                                        <input id="estadoUsaG" data-bind="value: estadoUsaG" placeholder="Estado" class="w3-input w3-border textos" disabled="true" />
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <p>
+                            <legend id="lydCG1" style="min-width:667px;"><b>ESTADO DE MANTENIMIENTO</b></legend>
+                        </p>
+                        <table id="tablaPrmEMUSAG" style="display:none" width="100%" border="0" cellspacing="15" cellpadding="0">
+                            <tr>
+                                <td width="55%">
+                                    <p>
+                                        <label class="w3-text-red"><b>&#218;ltimo ingreso taller</b></label>
+                                        <input name="fecEMUSAG" type="text" id="fecEMUSAG" class="w3-input textos" readonly>
+                                    </p>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td width="30%">
+                                    <p>
+                                        <label class="w3-text-red"><b>Km.</b></label>
+                                        <input name="kmEMUSAG" type="text" id="kmEMUSAG" class="w3-input textos" readonly>
+                                    </p>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                        <table id="tableEMUSAG" style="display:none">
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="5,000" style="width: 90%;" align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl5000U" type="text" style="width: 30%;" disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx5000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;width: 30%;"></i> <i id="Gx5000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;width: 30%;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="80,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl80000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx80000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx80000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="10,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl10000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx10000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;width: 30%;"></i> <i id="Gx10000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;width: 30%;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="85,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl85000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx85000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx85000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="15,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl15000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx15000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx15000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="90,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl90000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx90000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx90000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="20,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl20000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx20000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx20000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="95,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl95000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx95000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx95000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="25,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl25000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx25000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx25000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="100,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl100000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx100000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx100000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="30,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl30000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx30000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx30000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="105,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl105000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx105000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx105000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="35,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl35000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx35000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx35000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="110,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl110000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx110000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx110000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="40,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl40000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx40000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx40000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="115,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl115000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx115000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx115000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="45,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl45000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx45000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx45000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="120,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl120000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx120000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx120000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="50,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl50000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx50000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx50000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="125,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl125000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx125000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx125000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="55,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl55000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx55000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx55000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="130,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl130000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx130000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx130000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="60,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl60000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx60000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx60000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="135,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl135000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx135000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx135000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="65,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl65000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx65000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx65000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="140,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl140000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx140000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx140000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="70,000" style="width: 90%;" align="rigth" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl70000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx70000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx70000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="145,000" style="width: 90%;" align="middle" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl145000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx145000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx145000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="clase">
+                                    <input type="text" value="75,000" style="width: 90%; " align="center" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl75000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx75000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx75000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                                <td class="clase">
+                                    <input type="text" value="150,000" style="width: 90%;" align="right" disabled>
+                                </td>
+                                <td>
+                                    <input id="Gl150000U" type="text" style="width: 30%; " disabled>
+                                </td>
+                                <td>
+                                    <i id="Gx150000vU" class="fa fa-check" aria-hidden="true" style="color:green; display:none;"></i> <i id="Gx150000xU" class="fa fa-times" aria-hidden="true" style="color:red; display:none;"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <p>
+                            <legend id="lydCG2" style="min-width:667px;"><b>FORMULARIO</b></legend>
+                        </p>
+                        <div id="divOtEstadoG">
+                        </div>
+                    </div>
+                    <div>
+                        <!--<p>
+                            <b>ESTADO DE MANTENIMIENTO</b>
+                        </p>-->
+                        <div id="divInspeccionG">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer data-role="footer">
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <div id="btnGuardaInfoUsaG">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </footer>
+</div>

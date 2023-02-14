@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<div
+  data-role="view"
+  data-title="text: strings.home.title"
+  data-layout="main"
+  data-model="app.home"
+  data-show="app.home.onShow"
+  data-after-show="app.home.afterShow"
+  id="homeScreen"
+  class="screen"
+>
+  <header data-role="header">
+    <div data-role="navbar" class="header-text">
+      <span data-bind="text: strings.home.title"></span>
+      <a
+        data-role="button"
+        href="#appDrawer"
+        data-rel="drawer"
+        data-align="left"
+        data-icon="drawer-button"
+      ></a>
+    </div>
+  </header>
+
+  <!-- START_CUSTOM_CODE_home -->
+  <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+  <div class="container">
+    <div class="item">
+      <div id="menuCboAgencia" style="display: block">
+        <table align="center" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td align="center">
+              <h1>
+                <b> <label class="w3-text-red" id="usuEmpresa2"></label> </b>
+              </h1>
+            </td>
+          </tr>
+        </table>
+        <div id="cboAgenciaUsu"></div>
+      </div>
+      <!--MENU-->
+      <div id="menuPagInicio" style="display: block">
+        <label id="iniUsuarioMenu" style="font-size: 12px"></label>
+        <ul id="navigation-container" data-role="listview">
+          <li>
+            <a onclick="verMenu('0')">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x w3-text-red"></i>
+                <i id="icnMenu0" class="fa fa-list fa-stack-1x"></i>
+              </span>
+              <span class="w3-text-red" style="font-size: 18px">
+                Seleccionar Agencia&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+            </a>
+          </li>
+        </ul>
+        <ul id="navigation-container" data-role="listview">
+          <li>
+            <a onclick="llamarrecepcion();">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x w3-text-red"></i>
+                <i id="icnMenu1" class="fa fa-car fa-stack-1x"></i>
+              </span>
+              <span class="w3-text-red" style="font-size: 18px">
+                Recepci&oacute;n Veh&iacute;culo&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+            </a>
+          </li>
+        </ul>
+        <ul id="navigation-container" data-role="listview">
+          <li>
+            <a onclick="llamaravaluo();">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x w3-text-red"></i>
+                <i id="icnMenu2" class="fa fa-file-text-o fa-stack-1x"></i>
+              </span>
+              <span class="w3-text-red" style="font-size: 18px">
+                Avaluo Veh&iacute;culo&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+            </a>
+          </li>
+        </ul>
+        <ul id="navigation-container" data-role="listview">
+          <li>
+            <a onclick="llamarcertifica();">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x w3-text-red"></i>
+                <i id="icnMenu3" class="fa fa-usd fa-stack-1x"></i>
+              </span>
+              <span class="w3-text-red" style="font-size: 18px">
+                Certificaci&oacute;n Veh&iacute;culo&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+            </a>
+          </li>
+        </ul>
+        <ul id="navigation-container" data-role="listview">
+          <li>
+            <a onclick="llamarestadocertifica();">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x w3-text-red"></i>
+                <i id="icnMenu4" class="fa fa-files-o fa-stack-1x"></i>
+              </span>
+              <span class="w3-text-red" style="font-size: 18px">
+                Consulta Seminuevos &nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END_CUSTOM_CODE_home -->
+</div>

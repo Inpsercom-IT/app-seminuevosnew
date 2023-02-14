@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<div data-role="view" data-title="INGRESO DE DATOS" data-layout="main" data-model="app.lector_barras" data-show="app.lector_barras.onShow" 
+     id="lector_barrasScreen" class="screen"  data-strech="true" >
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <span data-role="view-title"></span>
+            <span style="display:none; visibility:hidden">
+                <a id="capturePhotoButton" class="w3-btn primary textos5" aria-label="Buscar">
+                    <i class="fa fa-camera" aria-hidden="true"></i>&nbsp;Captura
+                </a>
+            </span>
+            <span style="display:none; visibility:hidden">
+                <a id="imageButton" onclick="getImage()" class="w3-btn primary textos5" aria-label="Seleccionar">
+                    <i class="fa fa-photo" aria-hidden="true"></i>&nbsp;Selecci&oacute;n
+                </a>
+            </span>
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+            <span style="display:none; visibility:hidden">
+                <a id="scanButton" class="w3-btn primary textos5" aria-label="Lector">
+                    <i class="fa fa-barcode" aria-hidden="true"></i>&nbsp;Lector
+                </a>
+            </span>
+            <a data-align="right" class="fa fa-reply" href="components/home/view.html" onclick="verMenu('1')" aria-hidden="true" data-role="button"></a>
+            <div id="navigation-container-more" style="display: none">
+            </div>
+        </div>
+    </header>
+   <header data-role="header">
+       <div>
+            <table align="center" cellpadding="0" cellspacing="0" width="100">
+                <tr>
+                    <td>
+                        <br /> <input type="radio" name="rdbMarca" checked="checked" value="kia"><label id="lblKia"></label>
+                        <input type="radio" name="rdbMarca" value="otros">Otros
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="w3-input w3-border textos2" id="infoPlacasVINRCP" name="infoPlacasVINRCP" type="text" placeholder="Placa o VIN" style="text-transform:uppercase;" value="">                        
+                    </td>
+                    <td align="center">
+                        <a id="btnBuscarRCP0" class="w3-btn primary" aria-label="Buscar" onclick="llamar(document.getElementById('infoPlacasVINRCP').value);">
+                            <i id="icnBuscarRCP0" class="fa fa-search" aria-hidden="true"></i>Buscar
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div id="divInfOT" style="display:none; visibility:hidden">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label class="w3-text-red" style="font-weight:bold; font-size:13px">Orden de Trabajo:</label>
+                                    </td>
+                                    <td>
+                                        <input id="numOT" type="text" class="w3-input textos" readonly style="font-weight:bold">
+                                    </td>
+                                    <td>
+                                        <a id="btnBuscarRCP1" id="imageButton" onclick="imprimeInfo()" class="w3-btn primary" aria-label="Imprimir">
+                                            <i id="icnBuscarRCP1" class="fa fa-print" aria-hidden="true"></i>&nbsp;Imprimir
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+       </div>
+   </header>
+    <div class="fondoRojoLogin">
+        <div scrool>
+            <div class="container">
+                <div class="form-group">
+                    <div id="divPrincRV">
+                        <div class="row -nopadding">
+                            <div class="col -align-center">
+                                <table align="center" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <img style="visibility:hidden; display:none; border:1px solid; margin: 5px auto; max-width: 50%; max-height: 50%;" id="smallImage" src="/kendo/tenor.gif" />
+                                            <div class="content" id="result"></div>
+                                            <div id="divLoading" style="display:block">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" style="min-width:95%">
+                        <!-- <div> -->
+                            <div class="demo-section k-content">  </div>
+                            <div id="vehiculo">
+                                <br />
+                                <!-- style="min-width:100vw; display: block" -->
+                                <div id="tabstripSN" style="min-width:100vw; display: block">
+                                    <ul>
+                                        <li class="k-state-active">
+                                            <i class="fa fa-car fa-lg " aria-hidden="true" title="Datos del Vehiculo"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-user fa-lg" aria-hidden="true" title="Datos del Cliente"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-dashboard fa-lg" aria-hidden="true" title="Historial"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-wrench fa-lg" aria-hidden="true" title="Orden de Trabajo"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-rss fa-lg" aria-hidden="true" title="Links Importantes"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-video-camera fa-lg" aria-hidden="true" title="Imagenes y Video"></i>
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <div id="datosVEH">
+                                            <div class="demo-section k-content wide"></div>
+                                                <div>
+                                                    <p>
+                                                        <legend id="lydOT0" style="min-width:667px;"><b>DATOS VEH&#205;CULO</b></legend>
+                                                    </p>
+
+                                                    <table style="width:100%;">
+                                                        <tr>
+                                                            <td>
+                                                                <label class="w3-text-red"><b>Vehiculo: </b></label>
+                                                                <input type="radio" name="rdbDatos" checked="checked" value="TOMA">Toma
+                                                                <input type="radio" name="rdbDatos" value="COMPRA">Compra
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>VIN</b></label>
+                                                                    <input id="chasis" data-bind="value: chasis" placeholder="VIN" style="text-transform:uppercase;" class="w3-input w3-border textos" onblur="validaVIN();" />
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Motor</b></label>
+                                                                    <input id="motor" data-bind="value: motor" placeholder="Motor" style="text-transform:uppercase;" class="w3-input w3-border textos" />
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>A&ntilde;o</b></label>
+                                                                    <input id="anio_modelo" data-bind="value: anio_modelo" placeholder="A&ntilde;o Modelo" class="w3-input w3-border textos" onblur="validaanio();" />
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Kilometraje</b></label>
+                                                                    <input id="kilometros" type="number" data-bind="value: kilometros" placeholder="Kilometraje" class="w3-input w3-border textos" />
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Marca</b></label>
+                                                                    <div id="divcbomarcas"></div>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Modelo</b></label>
+                                                                    <div id="divcboModelo"></div>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Des. Model</b></label>
+                                                                    <input id="desmodelo" data-bind="value: desmodelo" placeholder="Descripcion del Modelo" class="w3-input w3-border textos" />
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Color</b></label>
+                                                                    <div id="divcboColor"></div>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Cilindraje</b></label>
+                                                                    <input id="cilindraje" type="number" data-bind="value: cilindraje" placeholder="Cilindraje" class="w3-input w3-border textos" />
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Combustible</b></label>
+                                                                    <div id="dboCombustible"></div>
+                                                                </p>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Grupo Auto(clase)</b></label> 
+                                                                    <div id="dboClase"></div>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Subclase(carroceria)</b></label>
+                                                                    <div id="dboCarroceria"></div>
+                                                                </p>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Transmisión</b></label> 
+                                                                    <div id="dbotransmision"></div>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Código Tracción</b></label>
+                                                                    <div id="dboTraccion"></div>
+                                                                </p>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>A&ntilde;o Matricula</b></label>
+                                                                    <input id="anio_matricula" type="number" data-bind="value: anio_matricula" placeholder="A&ntilde;o de Matricula" class="w3-input w3-border textos" onblur="validaanio();" onchange="cambiaAM(this.value)" />
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Matriculado</b></label>
+                                                                    <div id="divcbotmatr"></div>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Tipo Avaluo</b></label>
+                                                                    <div id="divcboTiAva" ></div>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Ubicacion Fisica</b></label>
+                                                                    <div id="divcboUbica"></div>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Prohibido Enajenar</label>
+                                                                    <div id="divcboEnajena"></div>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Numero Orden</b></label>
+                                                                    <input id="num_orden" type="number" data-bind="value: num_orden" placeholder="Numero Orden" class="w3-input w3-border textos" />
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Tipo Formulario</b></label>
+                                                                    <div id="divcboForm"></div>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Modelo Auto Nuevo</b></label>
+                                                                    <div id="divcboAutoN"></div>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Sucursal</b></label>
+                                                                    <div id="divcboSucursal"></div>
+                                                                </p>
+                                                            </td>
+                                                            <td width="30%">
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Vendedor</b></label>
+                                                                    <div id="divcboVender"></div>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="35%">
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Placa</b></label>
+                                                                    <input id="placa" data-bind="value: placa" placeholder="Placa" class="w3-input w3-border textos" />
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                               <!--  <p>
+                                                                    <label class="w3-text-red"><b>Placa</b></label>
+                                                                    <input id="placa" data-bind="value: placa" placeholder="Placa" class="w3-input w3-border textos" />
+                                                                </p> -->
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr><td><p>&nbsp;</p></td><td><p>&nbsp;</p></td></tr>
+                                                    </table>
+                                                    <p>
+                                                        <label class="w3-text-red"><b>Observacion</b></label>
+                                                        <textarea name="comentariosR" rows="2" cols="30" id="observacionR" data-bind="value: observacionR" placeholder="Observacion " class="w3-input w3-border textos" maxlength="200"></textarea>
+                                                    </p>
+                                                    <br />
+                                                    <p>
+                                                        <label class="w3-text-red"><b>Fecha Recepci&oacute;n</b></label>
+                                                        <input id="fecha_recepcion" type="text" class="w3-input textos" readonly>
+                                                    </p>
+                                                    <table>
+                                                        <tr>
+                                                            <td width="30%">
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>A&ntilde;o</b></label>
+                                                                    <input id="anio_vh62" data-bind="value: anio_vh62" placeholder="A&ntilde;o VH62" class="w3-input w3-border textos" disabled="true" />
+                                                                </p>
+                                                            </td>
+                                                            <td width="35%"   style="padding-right: 30px;" >
+                                                            <!-- <td style="padding-left: 10px; padding-right: 10px;font-family:Arial; font-size: 12px;"> -->
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Secuencia</b></label>
+                                                                    <input id="secuencia" data-bind="value: secuencia" placeholder="Secuencia" class="w3-input w3-border textos" disabled="true" />
+                                                                </p>
+                                                            </td>
+                                                            <td width="35%">
+                                                                <p>
+                                                                    <label class="w3-text-red"><b>Estado</b></label>
+                                                                    <input id="estado" data-bind="value: estado" placeholder="Estado" class="w3-input w3-border textos" disabled="true" />
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <input id="pais" type="hidden" data-bind="value: pais" class="w3-input w3-border textos" />
+                                                    <input id="ciudad_propietario" type="hidden" data-bind="value: ciudad_propietario" class="w3-input w3-border textos" />
+                                                    <!--<input id="calle_principal_propietario" type="hidden" data-bind="value: calle_principal_propietario" class="w3-input w3-border textos" />
+                                                    <input id="numero_calle_propietario" type="hidden" data-bind="value: numero_calle_propietario" class="w3-input w3-border textos" />
+                                                    <input id="calle_interseccion_propieta" type="hidden" data-bind="value: calle_interseccion_propieta" class="w3-input w3-border textos" />
+                                                    <input id="telefono_propietario" type="hidden" data-bind="value: telefono_propietario" class="w3-input w3-border textos" />-->
+                                                    <input id="tipo_dir_propietario" type="hidden" data-bind="value: tipo_dir_propietario" class="w3-input w3-border textos" />
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                    <div>
+                                        <p>
+                                            <legend id="lydOT1" style="min-width:667px;"><b>DATOS CLIENTE</b></legend>
+                                        </p>
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <label class="w3-text-red"><b>Tipo Persona</b></label>
+                                                        <div id="divcbotpers"></div>
+                                                    </p>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td>
+                                                    <p>
+                                                        <label class="w3-text-red"><b>Tipo ID</b></label>
+                                                        <div id="divcbotid"></div>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <label class="w3-text-red"><b>ID</b></label>
+                                                        <div class="rowsem">
+                                                            <div>
+                                                                <input name="numero_id_propietario" type="number" placeholder="Ced/Ruc/Pasaporte" id="numero_id_propietario" onchange="llamarConsultaCliente(this.value)" class="w3-input w3-border textos3">
+                                                            </div>
+                                                            <div>
+                                                                <a id="scanButtonCedula" onclick="scanCedula()" class="w3-btn primary textos51" aria-label="Lector">
+                                                                    <i class="fa fa-barcode" aria-hidden="true"></i>&nbsp;&nbsp;Scan Cédula</a>
+                                                            </div>
+                                                        </div>
+                                                    </p>
+                                                </td>
+                                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                                <td>
+                                                    <p>
+                                                        <label class="w3-text-red"><b>No.</b></label>
+                                                        <input name="persona_numero" type="text" id="persona_numero" class="w3-input textos" readonly />
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p>
+                                            <label class="w3-text-red"><b>Nombre 1</b></label>
+                                            <input name="persona_nombre" type="text" id="persona_nombre" placeholder="Primer Nombre" class="w3-input w3-border textos">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Nombre 2</b></label>
+                                            <input id="persona_nombre2" data-bind="value: persona_nombre2" placeholder="Segundo Nombre" class="w3-input w3-border textos" />
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Apellido 1 / Raz&oacute;n Social</b></label>
+                                            <input name="persona_apellido" type="text" id="persona_apellido" placeholder="Apellido Paterno/Razon Soc." class="w3-input w3-border textos">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Apellido 2</b></label>
+                                            <input name="persona_apellido2" type="text" id="persona_apellido2" placeholder="Apellidos Materno" class="w3-input w3-border textos">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Pa&iacutes</b></label>
+                                            <!--<input name="cli_pais" type="text" id="cli_pais" class="w3-input w3-border textos">-->
+                                            <div id="divcboPais"></div>
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Ciudad</b></label>
+                                            <!--<input name="cli_ciudad_propietario" class="w3-input w3-border textos" id="cli_ciudad_propietario" data-bind="value: nombre_propietario" />-->
+                                            <div id="divcboCiudad"></div>
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Direcci&oacuten</b></label>
+                                            <!--<input id="direc" placeholder="Select direc..." class="w3-input w3-border textos" />-->
+                                            <div id="divcbodirec"></div>
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Calle</b></label>
+                                            <input name="cli_calle_principal_propietario" type="text" id="cli_calle_principal_propietario" placeholder="Calle principal" class="w3-input w3-border textos">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>No. Casa</b></label>
+                                            <input name="cli_numero_calle_propietario" type="text" id="cli_numero_calle_propietario" placeholder="No. Calle" class="w3-input w3-border textos">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Intersecci&oacuten</b></label>
+                                            <input name="cli_calle_interseccion_propieta" type="text" id="cli_calle_interseccion_propieta" placeholder="Calle secundaria" class="w3-input w3-border textos">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Celular</b></label>
+                                                <input name="telefono_celular" type="text" id="telefono_celular" placeholder="No. Celular" class="w3-input w3-border textos" onblur="ValidaCelularR();">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Tel&eacute;fono</b></label>
+                                                <input name="cli_telefono_propietario" type="text" id="cli_telefono_propietario" placeholder="No.Telefono fijo" class="w3-input w3-border textos" onblur="ValidaTelefR();">
+                                        </p><p>
+                                            <label class="w3-text-red"><b>Email</b></label>
+                                                <input name="mail" type="text" id="mail" size="55" placeholder="Email" class="w3-input w3-border textos" onblur="ValidaMailR();">
+                                        </p>
+                                        <!--<p>
+                                            <label class="w3-text-red"><b>Autorizado por</b></label>
+                                            <input name="autorizadoPor" type="text" id="autorizadoPor" size="55" placeholder="Nombre autoriza" class="w3-input w3-border textos">
+                                        </p>-->
+                                    </div>
+                                    <div>
+
+                                        <p>
+                                            <legend id="lydOT2" style="min-width:667px;"><b>HISTORIAL DE MANTENIMIENTO</b></legend>
+
+                                        </p>
+
+                                        <table id="tablaPrmEM" style="display:none" width="100%" border="0" cellspacing="15" cellpadding="0">
+                                            <tr>
+                                                <td width="55%">
+                                                    <p>
+                                                        <label class="w3-text-red"><b>&#218;ltimo ingreso taller</b></label>
+                                                        <input name="fecEM" type="text" id="fecEM" class="w3-input textos" readonly>
+                                                    </p>
+                                                </td>
+
+                                                <td>&nbsp;</td>
+                                                <td width="30%">
+                                                    <p>
+                                                        <label class="w3-text-red"><b>Kilometraje</b></label>
+                                                        <input name="kmEM" type="text" id="kmEM" class="w3-input textos" readonly>
+                                                    </p>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </table>
+
+                                        <div id="divtableEM"></div>
+
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <legend id="lydOT3" style="min-width:667px;"><b>HISTORIAL ORDENES DE TRABAJO</b></legend>
+                                        </p>
+                                        <table width="80%" border="0" cellspacing="0" cellpadding="0" id="tablaOT" style="display: none">
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <label class="w3-text-red" style="display: none"><b>Inicio</b></label>
+                                                    </p>
+                                                    <p>
+                                                        <input id="dpInicio" value="01-01-1900" size="12" style="display: none" class="w3-input w3-border calend" />
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <label class="w3-text-red" style="display: none"><b>Fin</b></label>
+                                                    </p>
+                                                    <p>
+                                                        <input id="dpFin" value="01-10-2017" size="12" style="display: none" class="w3-input w3-border calend" />
+                                                    </p>
+                                                </td>
+                                                <td colspan="2" align="center">
+                                                    <p>
+                                                        <a class="w3-btn w3-red k-button primary" style="display: none" aria-label="Buscar" onclick="ConsultarOT(document.getElementById('chasis').value, document.getElementById('dpInicio').value, document.getElementById('dpFin').value);">
+                                                            &nbsp;<i class="fa fa-search" aria-hidden="true"></i>
+                                                            &nbsp;
+                                                        </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div id="datosOT" style="font-size:11px; display:none"></div>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <legend id="lydOT4" style="min-width:667px;"><b>Links de Interes</b></legend>
+                                            <br/><br/>
+                                        </p>
+                                        <div id="contenedor" class="blanco"></div>
+                                            
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <legend id="lydOT5" style="min-width:667px;"><b>VIDEO Y FOTOS</b></legend>
+                                        </p>
+                                        <!--<div id="videosOT"></div>-->
+                                        <div id="divOTVideosCont"></div>
+                                        <div id="playVideo"></div>
+                                        <div id="videosOT" style="width:100%"></div>
+                                        <div id="statusDom"></div>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+    <footer data-role="footer">
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <div id="btnGuardaInfo">
+                        <!--<button id="btnGuar" onclick='GuardarDatosCV1();' class='w3-btn w3-red'>GUARDARarrr</button>-->
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </footer>
+    <!-- END_CUSTOM_CODE_lector_barras -->
+</div>
+
+<style>
+    .rowsem {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>

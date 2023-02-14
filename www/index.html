@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.default.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="styles/overrides.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/theme.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="kendo/styles/w3.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common.min.css">
+    
+<style>
+        .k-loading-mask .k-loading-image {
+            background-image: url('kendo/styles/images/carloading2.gif') !important;
+        }
+        
+        div.k-loading-mask {
+            z-index: 3;
+        }
+
+        #tabstrip,
+        #tabstripCitas,
+        #tabstripOT,
+        #tabstripVIN,
+        #tabstripEV,
+        #tabstripEV2 {
+            width: 90vw;
+            top: 1;
+            /*left: 5vw;*/
+            right: 0;
+            align-content: center;
+        }
+        
+        #tabstrip h2 {
+            font-weight: lighter;
+            font-size: 5em;
+            line-height: 1;
+            /*padding: 0 0 0 30px;*/
+            margin: 0;
+        }
+        
+        #tabstrip h2 span {
+            background: none;
+            font-size: .3em;
+            vertical-align: top;
+        }
+        
+        #tabstrip p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .primary {
+            color: #fff;
+            min-width: 75px;
+        }
+        
+        .calend {
+            width: 105px;
+        }
+        
+        .textos {
+            width: 95%;
+            border-width: 0;
+        }
+        
+        .textos2 {
+            width: 215px;
+        }
+        
+        .textos3 {
+            width: 90%;
+            align-content: flex-end;
+        }
+        
+        .textos4 {
+            width: 25px;
+        }
+        
+        .textos5 {
+            font-size: 13px;
+        }
+        
+        .textos51 {
+            font-size: 15px;
+        }
+        
+        .textos6 {
+            width: 90%;
+        }
+
+        .textos7 {
+            font-size: 12px;
+        }
+        
+        .mialtura {
+            height: 30px;
+        }
+        
+        .container {
+            width: 100%;
+            display: flex;
+            height: 80vh;
+            justify-content: center;
+        }
+        
+        .item {
+            align-self: center;
+        }
+        
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            border: 10px solid #dcdcdc;
+            border-radius: 50%;
+            border-top: 10px solid #3498db;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .letra {
+            font-size: large;
+        }
+        
+        .clase {
+            padding: 2px;
+        }
+
+        
+        table1,
+        th1,
+        td1 {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        th1,
+        td1 {
+            padding: 2px;
+        }
+        
+        .form-group1 {
+            margin-bottom: 15px;
+        }
+        
+        .container1 {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .form-horizontal1 .form-group1 {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        .green {
+            color: green;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .black {
+            color: black;
+        }
+        
+        .select-style {
+            border: 1px solid #ccc;
+            width: 250px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .select-style select {
+            padding: 5px 8px;
+            width: 100%;
+            border: none;
+            box-shadow: none;
+            -webkit-appearance: none;
+        }
+        
+        .select-style select:focus {
+            outline: none;
+        }
+        /*.fondoRojo {
+            background-color: #bb162b;
+        }*/
+        
+        .k-button {
+            min-width: 25px !important;
+            min-height: 25px !important;
+            padding: 0 !important;
+        }
+        
+        .agendaCab {
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            background-color: #f44336;
+        }
+        
+        .navbar2 {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        legend {
+            border-radius: 10px;
+            background: #F44336;
+            color: #fff;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+
+        #rcorners1, #rcorners2 {
+    border-radius: 5px;
+    background: #73AD21;
+    padding: 5px; 
+  width: 150px;
+  
+}
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+.container33{
+  padding-top:50px;
+  margin: auto;
+}
+
+</style>
+
+
+    <script src="cordova.js"></script>
+    <script src="cordova-print-pdf-plugin/www/printPDF.js"></script>
+    <script src="kendo/js/jquery-3.6.0.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="app.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+    <script src="dataProviders/jsonProvider.js"></script>
+    <script src="https://secure.placetopay.ec/redirection/lightbox.min.js"></script>
+    <script src="kendo/js/jquery.gdocsviewer.min.js"></script>
+    <script src="kendo/js/jquery.gdocsviewer.js"></script>
+    <script src="kendo/js/dist/JsBarcode.all.js"></script>
+    <script src="kendo/js/easycal.js"></script>
+
+</head>
+<body id="kendoUiMobileApp">
+    <script src="components/vista/index.js"></script>
+    <script src="components/home/index.js"></script>
+    <script src="components/lector_barras/index.js"></script>
+    <script src="components/Login/index.js"></script>
+    <script src="components/detalle_ot/index.js"></script>
+    <script src="components/avaluo_vehiculo/index.js"></script>
+    <script src="components/avaluo/index.js"></script>
+    <script src="components/certificacion_vehiculo/index.js"></script>
+    <script src="components/estado_certificacion/index.js"></script>
+    <script src="components/certifica_general/index.js"></script>
+    <script src="components/consulta_G/index.js"></script>
+    <div data-role=" layout" data-id="main">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+            </div>
+        </header>
+    </div>
+    <div data-role="layout" data-id="main-nonav">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+    </div>
+    <div id="appDrawer" data-role="drawer" data-title="Menu Principal">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+        <div id="vwLogin">
+            <div data-bind="visible: isVisible">
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/Login/view.html"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Acceso</span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+            </div>
+        </div>
+        <div id="vwLogout">
+            <div data-bind="visible: isVisible">
+                <ul id="navigation-container" data-role="listview">
+                    <li>
+                        <span class="navigation-link-text">
+                         <!--<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;-->
+                            <label id="iniUsuario" style="font-size: 12px"></label>
+                        </span>
+                    </li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/home/view.html" onclick="verMenu('1')"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Inicio</span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/home/view.html" onclick="verMenu('0')"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Seleccionar Agencia</span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/lector_barras/view.html"><i class="fa fa-car" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Recepci&oacute;n Veh&iacute;culo</span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/avaluo/view.html"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Avaluo Veh&iacute;culo</span></a></li>
+                    <!--<li><a href="components/avaluo_vehiculo/view.html"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Avaluo Veh&iacute;culo</span></a></li>
+                    <li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/certificacion_vehiculo/view.html"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Certificaci&oacute;n Veh&iacute;culo</span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+                <ul id="navigation-container" data-role="listview">
+                    <li><a href="components/certifica_general/view.html"><i class="fa fa-files-o" aria-hidden="true"></i>&nbsp;&nbsp;<span class="navigation-link-text">Consulta Seminuevos </span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+                <ul id="navigation-container" data-role="listview">
+                    <li><a onclick="cerrarSistema();"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;<span id="spnLogout" class="navigation-link-text">Cerrar</span></a></li>
+                    <!--<li><a href="components/vista/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.vista.title"></span></a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="notify" class="notify-pop-up">
+        <span class="notify-pop-up__content"></span>
+    </div>
+
+    <!--  start index html save -->
+    <!--  end index html save -->
+    <!-- START_CUSTOM_CODE_kendoUiMobileApp -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+            <!-- END_CUSTOM_CODE_kendoUiMobileApp -->
+        </body>
+</html>
